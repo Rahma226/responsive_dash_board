@@ -31,9 +31,11 @@ class _DrawerItemsListViewState extends State<DrawerItemsListView> {
     return SliverList.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
+        bool isActive = activeIndex == index;
+
         return GestureDetector(
           onTap: () {
-            if (activeIndex != index) {
+            if (!isActive) {
               setState(() {
                 activeIndex = index;
               });
@@ -41,9 +43,17 @@ class _DrawerItemsListViewState extends State<DrawerItemsListView> {
           },
           child: Padding(
             padding: const EdgeInsets.only(top: 20),
-            child: DrawerItem(
-              drawerItemModel: items[index],
-              isActive: activeIndex == index,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              decoration: BoxDecoration(
+                color: isActive ? Colors.blue.withOpacity(0.1) : Colors.transparent,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: DrawerItem(
+                drawerItemModel: items[index],
+                isActive: isActive,
+              ),
             ),
           ),
         );
