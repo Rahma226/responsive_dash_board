@@ -2,6 +2,7 @@ import 'package:dash_board/models/all_expenses_item_model.dart';
 import 'package:dash_board/utils/app_images.dart';
 import 'package:dash_board/widgets/all_expanses_item.dart';
 import 'package:dash_board/widgets/all_expenses_header.dart';
+import 'package:dash_board/widgets/all_expenses_items_list.dart';
 import 'package:flutter/material.dart';
 
 class AllExpenses extends StatelessWidget {
@@ -22,13 +23,7 @@ class AllExpenses extends StatelessWidget {
           SizedBox(
             height: 16,
           ),
-          AllExpansesItem(
-            itemModel: AllExpensesItemModel(
-                image: Assets.imagesIncome,
-                title: 'Income',
-                date: 'April 2024',
-                price: r'$20,129'),
-          ),
+         AllExpensesItemsList(),
         ],
       ),
     );
