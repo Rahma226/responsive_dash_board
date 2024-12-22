@@ -15,9 +15,12 @@ class DesktopLayout extends StatelessWidget {
           width: 32,
         ),
         Expanded(
-          flex: 2,
+          flex: 3,
           child: Column(
             children: [
+              SizedBox(
+                height: 40,
+              ),
               AllExpenses(),
               SizedBox(
                 height: 24,
@@ -26,6 +29,10 @@ class DesktopLayout extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(
+          width: 24,
+        ),
+        Expanded(flex: 2, child: Placeholder()),
       ],
     );
   }
