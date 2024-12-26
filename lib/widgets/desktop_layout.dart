@@ -1,6 +1,8 @@
-import 'package:dash_board/widgets/all_expenses.dart';
 import 'package:dash_board/widgets/custom_drawer.dart';
-import 'package:dash_board/widgets/quick_invoice.dart';
+import 'package:dash_board/widgets/my_card.dart';
+import 'package:dash_board/widgets/my_card_section.dart';
+import 'package:dash_board/widgets/my_cards_page_view.dart';
+import 'package:dash_board/widgets/section2.dart';
 import 'package:flutter/material.dart';
 
 class DesktopLayout extends StatelessWidget {
@@ -16,23 +18,14 @@ class DesktopLayout extends StatelessWidget {
         ),
         Expanded(
           flex: 3,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 40,
-              ),
-              AllExpenses(),
-              SizedBox(
-                height: 24,
-              ),
-              QuickInvoice(),
-            ],
-          ),
+          child: section2(),
         ),
         SizedBox(
           width: 24,
         ),
-        Expanded(flex: 2, child: Placeholder()),
+        Expanded(
+          child: MyCardSection(),
+        ),
       ],
     );
   }
