@@ -13,20 +13,23 @@ class AllExpensesItemsList extends StatefulWidget {
 class _AllExpensesItemsListState extends State<AllExpensesItemsList> {
   final List<AllExpensesItemModel> items = const [
     AllExpensesItemModel(
-        image: Assets.imagesBalance,
-        title: 'Balance',
-        date: 'April 2024',
-        price: r'$20,129'),
+      image: Assets.imagesBalance,
+      title: 'Balance',
+      date: 'April 2024',
+      price: r'$20,129',
+    ),
     AllExpensesItemModel(
-        image: Assets.imagesIncome,
-        title: 'Income',
-        date: 'April 2024',
-        price: r'$20,129'),
+      image: Assets.imagesIncome,
+      title: 'Income',
+      date: 'April 2024',
+      price: r'$20,129',
+    ),
     AllExpensesItemModel(
-        image: Assets.imagesExpenses,
-        title: 'Expenses',
-        date: 'April 2024',
-        price: r'$20,129'),
+      image: Assets.imagesExpenses,
+      title: 'Expenses',
+      date: 'April 2024',
+      price: r'$20,129',
+    ),
   ];
 
   int selectedIndex = 0;
@@ -34,31 +37,64 @@ class _AllExpensesItemsListState extends State<AllExpensesItemsList> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: items.asMap().entries.map((entry) {
-        int index = entry.key;
-        var item = entry.value;
-        return Expanded(
+      children: [
+        Expanded(
           child: GestureDetector(
             onTap: () {
-              setState(() {
-                selectedIndex = index;
-              });
+              updateIndex(0);
             },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: index == 1 ? 12 : 0),
-              child: AnimatedScale(
-                scale: selectedIndex == index ? 1.05 : 1.0, 
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut, 
-                child: AllExpansesItem(
-                  isActive: selectedIndex == index,
-                  itemModel: item,
-                ),
+            child: AnimatedScale(
+              scale: selectedIndex == 0 ? 1.05 : 1.0, 
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              child: AllExpansesItem(
+                isActive: selectedIndex == 0,
+                itemModel: items[0],
               ),
             ),
           ),
-        );
-      }).toList(),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              updateIndex(1);
+            },
+            child: AnimatedScale(
+              scale: selectedIndex == 1 ? 1.05 : 1.0, 
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              child: AllExpansesItem(
+                isActive: selectedIndex == 1,
+                itemModel: items[1],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              updateIndex(2);
+            },
+            child: AnimatedScale(
+              scale: selectedIndex == 2 ? 1.05 : 1.0, 
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              child: AllExpansesItem(
+                isActive: selectedIndex == 2,
+                itemModel: items[2],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
+  }
+
+  void updateIndex(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
   }
 }

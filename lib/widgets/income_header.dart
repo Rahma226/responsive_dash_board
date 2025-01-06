@@ -17,8 +17,8 @@ class IncomeHeader extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          color: Colors.white,
           decoration: ShapeDecoration(
+            color: Colors.white,
             shape: RoundedRectangleBorder(
               side: const BorderSide(
                 width: 1,
